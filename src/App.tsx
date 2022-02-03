@@ -1,13 +1,36 @@
-import { useKeyCombinations } from "./useKeyCombinations";
+import { useMultiCombinations } from "./useKeyCombinations";
 
 const App = () => {
-  useKeyCombinations(
-    "CONTROL+P+A",
-    () => {
-      console.log("check");
+  useMultiCombinations([
+    {
+      combination: ["CONTROL", "KEY-P", "DIGIT-1"],
+      callBack: (e) => {
+        console.log({ key: e.key });
+      },
+      preventDefault: true,
     },
-    true
-  );
+    {
+      combination: ["ALT", "CONTROL", "KEY-A"],
+      callBack: (e) => {
+        console.log({ key: e.code });
+      },
+      preventDefault: true,
+    },
+    {
+      combination: ["ALT", "KEY-X"],
+      callBack: (e) => {
+        console.log({ key: e.code });
+      },
+      preventDefault: true,
+    },
+    {
+      combination: ["CONTROL", "SHIFT", "DIGIT-1"],
+      callBack: (e) => {
+        console.log({ key: e.code });
+      },
+      preventDefault: true,
+    },
+  ]);
 
   return <input type="text" />;
 };
